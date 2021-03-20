@@ -4,25 +4,61 @@ import ReactDOM from 'react-dom';
 // CSS
 import './index.css';
 
+// setup vars
+const firstBook = {
+  img:
+    'https://images-na.ssl-images-amazon.com/images/I/81WZ6QvGZ2L._AC_UL200_SR200,200_.jpg',
+  title: `It's Not Easy Being a Bunny (Beginner Books(R))`,
+  author: 'Marilyn Sadler',
+};
+
+const secondBook = {
+  img:
+    'https://images-na.ssl-images-amazon.com/images/I/71QuWEIWHlL._AC_UL200_SR200,200_.jpg',
+  title: `Dog Man: Mothering Heights`,
+  author: 'Dav Pilkey',
+};
+
 function BookList() {
   return (
     <section className="book-list">
-      <Book />
+      <Book
+        img={firstBook.img}
+        title={firstBook.title}
+        author={firstBook.author}
+      />
+      <Book
+        img={secondBook.img}
+        title={secondBook.title}
+        author={secondBook.author}
+      />
     </section>
   );
 }
 
-const Book = () => {
+const Book = (props) => {
+  console.log(props);
+
   return (
     <article className="book">
-      <img
-        src="https://images-na.ssl-images-amazon.com/images/I/81WZ6QvGZ2L._AC_UL200_SR200,200_.jpg"
-        alt=""
-      />
-      <h1>It's Not Easy Being a Bunny (Beginner Books(R))</h1>
-      <h4>Marilyn Sadler</h4>
+      <img src={props.img} alt="" />
+      <h1>{props.title}</h1>
+      <h4>{props.author}</h4>
     </article>
   );
 };
+
+// alternative way to get args from props
+// const Book = (props) => {
+//   const {img, title, author} = props;
+
+//   return (
+//     <article className="book">
+//       <img src={img} alt="" />
+//       <h1>{title}</h1>
+//       <h4>{author}</h4>
+//     </article>
+//   );
+// };
 
 ReactDOM.render(<BookList />, document.getElementById('root'));
