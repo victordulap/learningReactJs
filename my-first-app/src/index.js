@@ -31,34 +31,26 @@ function BookList() {
         img={secondBook.img}
         title={secondBook.title}
         author={secondBook.author}
-      />
+      >
+        {/* children from props */}
+        <p>Lorem ipsum dolor sit amet.</p>
+      </Book>
     </section>
   );
 }
 
 const Book = (props) => {
-  console.log(props);
+  // object destruction
+  const { img, title, author } = props;
 
   return (
     <article className="book">
-      <img src={props.img} alt="" />
-      <h1>{props.title}</h1>
-      <h4>{props.author}</h4>
+      <img src={img} alt="" />
+      <h1>{title}</h1>
+      <h4>{author}</h4>
+      {props.children}
     </article>
   );
 };
-
-// alternative way to get args from props
-// const Book = (props) => {
-//   const {img, title, author} = props;
-
-//   return (
-//     <article className="book">
-//       <img src={img} alt="" />
-//       <h1>{title}</h1>
-//       <h4>{author}</h4>
-//     </article>
-//   );
-// };
 
 ReactDOM.render(<BookList />, document.getElementById('root'));
