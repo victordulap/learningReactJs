@@ -33,7 +33,7 @@ function BookList() {
   return (
     <section className="book-list">
       {books.map((book) => {
-        return <Book key={book.id} book={book} />;
+        return <Book key={book.id} {...book} />;
       })}
     </section>
   );
@@ -42,7 +42,7 @@ function BookList() {
 const Book = (props) => {
   console.log(props);
   // object destruction
-  const { img, title, author } = props.book;
+  const { img, title, author } = props;
 
   return (
     <article className="book">
