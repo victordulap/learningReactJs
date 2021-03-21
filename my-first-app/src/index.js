@@ -33,6 +33,7 @@ function BookList() {
   return (
     <section className="book-list">
       {books.map((book) => {
+        // the names need to match
         return <Book key={book.id} {...book} />;
       })}
     </section>
@@ -42,13 +43,27 @@ function BookList() {
 const Book = (props) => {
   console.log(props);
   // object destruction
-  const { img, title, author } = props;
+  const { id, img, title, author } = props;
+
+  // attribute, eventHandler
+  // onClick, onMouseOver (react events)
+  const deleteDemo = (id) => {
+    console.log(`id: ${id}`);
+  };
 
   return (
-    <article className="book">
+    <article
+      className="book"
+      onMouseOver={(e) => {
+        // console.log(e.target);
+      }}
+    >
       <img src={img} alt="" />
       <h1>{title}</h1>
       <h4>{author}</h4>
+      <button type="button" onClick={() => deleteDemo(id)}>
+        delete
+      </button>
       {props.children}
     </article>
   );
