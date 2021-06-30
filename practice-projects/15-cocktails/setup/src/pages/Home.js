@@ -1,13 +1,17 @@
-import React from 'react'
-import CocktailList from '../components/CocktailList'
-import SearchForm from '../components/SearchForm'
+import React from 'react';
+import CocktailList from '../components/CocktailList';
+import SearchForm from '../components/SearchForm';
+import Loading from '../components/Loading';
+import { useGlobalContext } from '../context';
 
 const Home = () => {
+  const { loading } = useGlobalContext();
   return (
-    <div>
-      <h2>home page</h2>
-    </div>
-  )
-}
+    <main>
+      <SearchForm />
+      {loading ? <Loading /> : <CocktailList />}
+    </main>
+  );
+};
 
-export default Home
+export default Home;
